@@ -1,0 +1,7 @@
+<img *ngFor="let card of map.maps"
+     [src]="'assets/images/cards/' + card.map + '.png'"
+     (click)="interactMap(card)"
+     (dblclick)="rotateMap(card)"
+     [ngStyle]="{'transform': 'rotate('+card.rotation+'deg)', '-webkit-transform': 'rotate('+card.rotation+'deg)', '-ms-transform': 'rotate('+card.rotation+'deg)'}"
+     class="card"
+     [ngClass]="{'grid': showGrid}"/>

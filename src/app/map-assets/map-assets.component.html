@@ -1,0 +1,7 @@
+<div class="title">
+  <h4>List of cards</h4>
+</div>
+
+<div class="card_container">
+  <img *ngFor="let card of cards; let numCard = index" (click)="chooseMap(numCard)" [src]="'assets/images/cards/' + numCard + '.png'" class="card" [ngClass]="{'selected': numCard === selectedCard}"/>
+</div>

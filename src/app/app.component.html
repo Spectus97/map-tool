@@ -1,0 +1,15 @@
+<app-header [map]="map"
+            (emitShowGridState)="updateShowGridState($event)"></app-header>
+
+<div class="body">
+  <app-map-assets (emitSelectedCard)="updateSelectedCardFromAssets($event)"
+                  *ngIf="showGrid">
+  </app-map-assets>
+
+  <app-content [map]="map"
+               (emitUpdateMap)="updateMap($event)"
+               [cardToAssign]="selectedCardFromAssets"
+               [showGrid]="showGrid"></app-content>
+
+  <app-tool-panel></app-tool-panel>
+</div>

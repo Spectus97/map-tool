@@ -1,0 +1,22 @@
+:host {
+  border: 3px cadetblue solid;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 620px;
+  background-color: black;
+
+  .card {
+    flex-grow: 1;
+    height: 60px;
+    width: 60px;
+  }
+
+  .grid {
+    border: 1px white solid;
+
+    &:hover {
+      border: 1px red groove;
+    }
+  }
+}

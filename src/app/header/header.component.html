@@ -1,0 +1,6 @@
+<button mat-raised-button color="primary" (click)="save()" title="Download JSON">Save</button>
+
+<button mat-raised-button color="primary" (click)="displayGrid()">
+  <span *ngIf="!showGrid">Add mode</span>
+  <span *ngIf="showGrid">Render mode</span>
+</button>
