@@ -40,6 +40,14 @@ export class AppComponent implements OnInit {
   }
 
   /**
+   * Met à jour la carte séléctionnée depuis la map
+   * @param {Map} card
+   */
+  public updateSelectedCardFromContent(card: Map): void{
+    this.selectedCard = card;
+  }
+
+  /**
    * Met à jour la map
    *
    * @param {MapCollection} map

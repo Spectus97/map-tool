@@ -15,6 +15,7 @@ export class ContentComponent implements OnInit {
   @Input() selectedCard: Map; // Carte selectionné
 
   @Output() emitUpdateMap: EventEmitter<MapCollection> = new EventEmitter();
+  @Output() emitSelectedCard: EventEmitter<Map> = new EventEmitter();
 
   constructor() {
   }
@@ -34,6 +35,7 @@ export class ContentComponent implements OnInit {
       map.map = this.cardToAssign;
     }
 
+    this.emitSelectedCard.emit(this.selectedCard);
     this.emitUpdateMap.emit(this.map);
   }
 

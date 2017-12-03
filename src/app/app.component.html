@@ -8,8 +8,12 @@
 
   <app-content [map]="map"
                (emitUpdateMap)="updateMap($event)"
+               (emitSelectedCard)="updateSelectedCardFromContent($event)"
                [cardToAssign]="selectedCardFromAssets"
-               [showGrid]="showGrid"></app-content>
+               [showGrid]="showGrid">
+  </app-content>
 
-  <app-tool-panel></app-tool-panel>
+  <app-tool-panel [selectedCard]="selectedCard"
+                  *ngIf="selectedCard">
+  </app-tool-panel>
 </div>

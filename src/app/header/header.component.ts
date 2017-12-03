@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AppService} from '../service/app.service';
 import {MapCollection} from '../model/map-collection';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +27,14 @@ export class HeaderComponent implements OnInit {
    * Permet de telecharger la map
    */
   public save(): void {
-    this.mapJson = this.appService.convertToJson(this.map);
+    const mapToExport = _.cloneDeep(this.map);
+
+    // On retire les maps qui ont pour valeur de map === 0 car il s'agit d'une carte vide
+    mapToExport.maps = _.filter(mapToExport.maps, map => {
+      return map.map > 0;
+    });
+
+    this.mapJson = this.appService.convertToJson(mapToExport);
 
     this.appService.exportFile(this.mapJson);
   }

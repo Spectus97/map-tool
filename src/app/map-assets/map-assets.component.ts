@@ -8,7 +8,7 @@ import {forEach} from "@angular/router/src/utils/collection";
 })
 export class MapAssetsComponent implements OnInit {
 
-  public nbCards: number = 5;
+  public nbCards: number = 7;
   public selectedCard: number;
   public cards = new Array(this.nbCards);
 
