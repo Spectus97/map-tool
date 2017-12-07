@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MapCollection} from './model/map-collection';
 import {Map} from './model/map';
+import * as _ from 'lodash';
+import {Offset} from "./model/offset";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,8 @@ import {Map} from './model/map';
 })
 export class AppComponent implements OnInit {
   public map: MapCollection;
-  public mapWidth = 10;
+  public mapToDisplay: MapCollection;
+  public mapWidth = 20;
   public showGrid: boolean;
   public selectedCardFromAssets: number;
   public selectedCard: Map;
@@ -43,7 +46,7 @@ export class AppComponent implements OnInit {
    * Met à jour la carte séléctionnée depuis la map
    * @param {Map} card
    */
-  public updateSelectedCardFromContent(card: Map): void{
+  public updateSelectedCardFromContent(card: Map): void {
     this.selectedCard = card;
   }
 
@@ -52,7 +55,7 @@ export class AppComponent implements OnInit {
    *
    * @param {MapCollection} map
    */
-  public updateMap(map: MapCollection): void{
+  public updateMap(map: MapCollection): void {
     this.map = map;
   }
 
@@ -75,7 +78,5 @@ export class AppComponent implements OnInit {
         this.map.maps.push(card);
       }
     }
-
-    console.log(this.map);
   }
 }

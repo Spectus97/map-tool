@@ -2,11 +2,11 @@
   <h4>Selected Card</h4>
 </div>
 
-<div class="card_container">
+<div class="card_container" *ngIf="selectedCard && selectedCard.map !== 0">
   <div class="preview">
     <img [src]="'assets/images/cards/' + selectedCard.map + '.png'" />
   </div>
-  <div class="info">
-
+  <div class="preview">
+    <img [src]="'assets/images/cards_3d/' + selectedCard.map + '.png'" />
   </div>
 </div>

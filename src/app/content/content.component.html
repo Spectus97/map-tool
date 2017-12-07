@@ -1,7 +1,21 @@
-<img *ngFor="let card of map.maps"
-     [src]="'assets/images/cards/' + card.map + '.png'"
-     (click)="interactMap(card)"
-     (dblclick)="rotateMap(card)"
-     [ngStyle]="{'transform': 'rotate('+card.rotation+'deg)', '-webkit-transform': 'rotate('+card.rotation+'deg)', '-ms-transform': 'rotate('+card.rotation+'deg)'}"
-     class="card"
-     [ngClass]="{'grid': showGrid}"/>
+<div class="horizontal">
+  <i class="material-icons" (click)="movePanel(0)" [ngClass]="{'hidden' : !canMovePanel(0)}">keyboard_arrow_up</i>
+</div>
+
+<div class="horizontal">
+  <i class="material-icons" (click)="movePanel(3)" [ngClass]="{'hidden' : !canMovePanel(3)}">keyboard_arrow_left</i>
+  <div class="tool">
+    <img *ngFor="let card of mapToDisplay.maps"
+         [src]="'assets/images/cards/' + card.map + '.png'"
+         (click)="interactMap(card)"
+         (dblclick)="rotateMap(card)"
+         [ngStyle]="{'transform': 'rotate('+card.rotation+'deg)', '-webkit-transform': 'rotate('+card.rotation+'deg)', '-ms-transform': 'rotate('+card.rotation+'deg)'}"
+         class="card"
+         [ngClass]="{'grid': showGrid}"/>
+  </div>
+  <i class="material-icons" (click)="movePanel(1)" [ngClass]="{'hidden' : !canMovePanel(1)}">keyboard_arrow_right</i>
+</div>
+
+<div class="horizontal">
+  <i class="material-icons" (click)="movePanel(2)" [ngClass]="{'hidden' : !canMovePanel(2)}">keyboard_arrow_down</i>
+</div>
