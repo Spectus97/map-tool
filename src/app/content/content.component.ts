@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges} from '@angular/core';
 import {MapCollection} from '../model/map-collection';
 import {Map} from '../model/map'
 import {Offset} from "../model/offset";
@@ -9,7 +9,7 @@ import * as _ from 'lodash';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent implements OnChanges {
 
   @Input() map: MapCollection;
   @Input() cardToAssign: number; // Represente le numero de la map depuis l'assets
@@ -27,8 +27,10 @@ export class ContentComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
-    this.calculateMapToDisplay(this.offset);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.map && changes.map.currentValue !== changes.map.previousValue) {
+      this.calculateMapToDisplay(this.offset);
+    }
   }
 
   /**
@@ -62,7 +64,7 @@ export class ContentComponent implements OnInit {
    * @param {number} direction
    */
   public movePanel(direction: number): void {
-    if(!this.canMovePanel(direction)){
+    if (!this.canMovePanel(direction)) {
       return;
     }
 

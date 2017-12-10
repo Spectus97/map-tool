@@ -1,8 +1,10 @@
 :host {
+  background-color: sandybrown;
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+  user-select: none;
 
   .body {
     display: flex;
@@ -14,11 +16,13 @@
 
   .footer{
     align-items: center;
-    background-color: azure;
+    background-color: darkslategrey;
     border-top: 3px cadetblue solid;
+    color: white;
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 5px 0;
+    font-style: italic;
   }
 }

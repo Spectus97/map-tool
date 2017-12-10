@@ -1,6 +1,31 @@
 :host {
-  background-color: azure;
+  align-items: center;
+  background-color: darkslategrey;
   border-bottom: 3px cadetblue solid;
+  display: flex;
+  flex-direction: row;
   height: auto;
-  padding: 10px;
+
+  .title{
+    align-items: center;
+    border-right: 1px black solid;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 10px;
+    font-weight: bold;
+
+    img{
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .button_container{
+    padding-left: 10px;
+
+    input[type="file"]{
+      color:red;
+    }
+  }
 }

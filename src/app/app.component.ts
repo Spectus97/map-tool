@@ -25,6 +25,21 @@ export class AppComponent implements OnInit {
   }
 
   /**
+   * Remet par défaut la map
+   */
+  public clearMap(): void {
+    this._init();
+  }
+
+  /**
+   * Met à jour la map depuis un import
+   * @param {MapCollection} importedMap
+   */
+  public updateMapByImport(importedMap: MapCollection): void {
+    this._init(importedMap);
+  }
+
+  /**
    * Met à jour la valeur de l'état d'affichage de la grille
    *
    * @param {boolean} state
@@ -63,19 +78,37 @@ export class AppComponent implements OnInit {
    * Permet d'initialiser la taille de la map
    * @private
    */
-  private _init(): void {
+  private _init(mapToImplement?: MapCollection): void {
     this.map = new MapCollection();
     this.map.maps = [];
 
     for (let x = 0; x < this.mapWidth; x++) {
       for (let y = 0; y < this.mapWidth; y++) {
-        const card = new Map();
-        card.posX = x;
-        card.posY = y;
-        card.map = 0;
-        card.rotation = 0;
+        if (mapToImplement) {
+          const mapFound = _.find(mapToImplement.maps, card => {
+            return card.posX === x && card.posY === y;
+          });
 
-        this.map.maps.push(card);
+          if (mapFound) {
+            this.map.maps.push(mapFound);
+          } else {
+            const card = new Map();
+            card.posX = x;
+            card.posY = y;
+            card.map = 0;
+            card.rotation = 0;
+
+            this.map.maps.push(card);
+          }
+        } else {
+          const card = new Map();
+          card.posX = x;
+          card.posY = y;
+          card.map = 0;
+          card.rotation = 0;
+
+          this.map.maps.push(card);
+        }
       }
     }
   }

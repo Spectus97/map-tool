@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
   @Input() map: MapCollection;
 
   @Output() emitShowGridState: EventEmitter<boolean> = new EventEmitter();
+  @Output() emitClearMap: EventEmitter<void> = new EventEmitter();
+  @Output() emitImportedMap: EventEmitter<MapCollection> = new EventEmitter();
 
   public mapJson: string;
   public showGrid: boolean;
@@ -21,6 +23,26 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  public fileToUpload(file: any): void{
+    this.readThis(file.target);
+  }
+
+  public readThis(inputValue: any): void {
+    const file: File = inputValue.files[0];
+    const myReader: FileReader = new FileReader();
+    const fileType = inputValue.parentElement.id;
+    myReader.readAsText(file);
+
+    console.log(fileType);
+
+    myReader.onloadend = () => {
+      if(file.name.substr(file.name.lastIndexOf('.') + 1) === 'json'){
+        this.map = JSON.parse(myReader.result);
+        this.emitImportedMap.emit(this.map);
+      }
+    };
   }
 
   /**

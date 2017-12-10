@@ -1,6 +1,18 @@
-<button mat-raised-button color="primary" (click)="save()" title="Download JSON">Save</button>
+<div class="title">
+  <span>ToolMap</span>
+  <img src="assets/images/icon_pickaxe.png" />
+</div>
 
-<button mat-raised-button color="primary" (click)="displayGrid()">
-  <span *ngIf="!showGrid">Add mode</span>
-  <span *ngIf="showGrid">Render mode</span>
-</button>
+<div class="button_container">
+
+  <button mat-raised-button color="success" (click)="save()" title="Download JSON">Save</button>
+
+  <button mat-raised-button color="primary" (click)="displayGrid()">
+    <span *ngIf="!showGrid">Add mode</span>
+    <span *ngIf="showGrid">Render mode</span>
+  </button>
+
+  <button mat-raised-button color="error" (click)="emitClearMap.emit()">Clear map</button>
+
+  <input type="file" (change)="fileToUpload($event)"/>
+</div>
